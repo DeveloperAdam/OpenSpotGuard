@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff">
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20sp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booking Details"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booking date: "
+            android:textColor="#000"/>
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018/03/06"
+                android:textColor="#000"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booking time: "
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="02:30 AM"
+                android:textColor="#000"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration: "
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60 Minutes"
+                android:textColor="#000"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price: "
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="#000"/>
+        </LinearLayout>
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="350sp"
+            android:layout_height="50sp"
+            android:layout_marginTop="20sp"
+            android:hint="Enter name here"
+            android:background="@drawable/bold_boundry"
+            android:paddingLeft="20sp"
+            android:textColorHint="#000"
+            />
+        <EditText
+            android:id="@+id/etPhoneNo"
+            android:layout_width="350sp"
+            android:layout_height="50sp"
+            android:layout_marginTop="20sp"
+            android:inputType="number"
+            android:background="@drawable/bold_boundry"
+            android:hint="Enter phone number here"
+            android:paddingLeft="20sp"
+            android:textColorHint="#000"
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50sp"
+            android:layout_marginRight="20sp"
+            android:layout_gravity="bottom|right">
+            <TextView
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CANCEL"
+                android:layout_marginRight="20sp"
+                android:textSize="17sp"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/btnBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BOOK"
+                android:layout_marginLeft="20sp"
+                android:textSize="17sp"
+                android:textColor="#000"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>
