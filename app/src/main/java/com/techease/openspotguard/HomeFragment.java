@@ -889,37 +889,41 @@ else
         switch (v.getId())
         {
             case R.id.btnAddBooking:
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
-                LayoutInflater inflater = getActivity().getLayoutInflater();
-                final View dialogView = inflater.inflate(R.layout.custom_addbooking, null);
-                dialogBuilder.setView(dialogView);
+                if (strTime==null)
+                {
+                    Toast.makeText(getActivity(), "No booking selected yet", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+                    LayoutInflater inflater = getActivity().getLayoutInflater();
+                    final View dialogView = inflater.inflate(R.layout.custom_addbooking, null);
+                    dialogBuilder.setView(dialogView);
 
-                 etName =  dialogView.findViewById(R.id.etName);
-                etPhoneNo =  dialogView.findViewById(R.id.etPhoneNo);
-                final TextView btnBook =dialogView.findViewById(R.id.btnBook);
-                final TextView btnCancel =dialogView.findViewById(R.id.btnCancel);
-                TextView tvDate =dialogView.findViewById(R.id.tvDate);
-                TextView tvTime =dialogView.findViewById(R.id.tvTime);
-                TextView tvPrice=dialogView.findViewById(R.id.tvPrice);
-                TextView tvDuration =dialogView.findViewById(R.id.tvDuration);
+                    etName =  dialogView.findViewById(R.id.etName);
+                    etPhoneNo =  dialogView.findViewById(R.id.etPhoneNo);
+                    final TextView btnBook =dialogView.findViewById(R.id.btnBook);
+                    final TextView btnCancel =dialogView.findViewById(R.id.btnCancel);
+                    TextView tvDate =dialogView.findViewById(R.id.tvDate);
+                    TextView tvTime =dialogView.findViewById(R.id.tvTime);
+                    TextView tvPrice=dialogView.findViewById(R.id.tvPrice);
+                    TextView tvDuration =dialogView.findViewById(R.id.tvDuration);
 
-
-
-                tvDate.setText(date);
-                tvTime.setText(strTime);
-                tvPrice.setText(String.valueOf(totalPrice));
-                tvDuration.setText(String.valueOf(strDuration));
-                final AlertDialog alert = dialogBuilder.create();
-                btnBook.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        strName=etName.getText().toString();
-                        strPhoneNo=etPhoneNo.getText().toString();
-                        if (strName.equals(""))
-                        {
-                            etName.setError("please fill this field");
-                        }
-                        else
+                    tvDate.setText(date);
+                    tvTime.setText(strTime);
+                    tvPrice.setText(String.valueOf(totalPrice));
+                    tvDuration.setText(String.valueOf(strDuration));
+                    final AlertDialog alert = dialogBuilder.create();
+                    btnBook.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            strName=etName.getText().toString();
+                            strPhoneNo=etPhoneNo.getText().toString();
+                            if (strName.equals(""))
+                            {
+                                etName.setError("please fill this field");
+                            }
+                            else
                             if (strPhoneNo.equals(""))
                             {
                                 etPhoneNo.setError("please fill this field");
@@ -940,33 +944,37 @@ else
                                 alert.dismiss();
                             }
 
-                    }
-                });
+                        }
+                    });
 
-                btnCancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                    alert.dismiss();
-                    }
-                });
+                    btnCancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            alert.dismiss();
+                        }
+                    });
 
-                date="";
-                strTime="";
-                strDuration=0;
-                totalPrice=0;
+                    date="";
+                    strTime="";
+                    strDuration=0;
+                    totalPrice=0;
 
 
-                alert.show();
+                    alert.show();
+                }
+
                 break;
             case R.id.tv930_10:
                 check=tv930_10.getText().toString();
                 check1++;
+
                 if (check1>1)
                 {
+                    Toast.makeText(getActivity(), "after"+strTime, Toast.LENGTH_SHORT).show();
                     tv930_10.setBackgroundResource(R.drawable.boundry);
                     strTimeFrom="";
                     strTimeTo="";
-                    strTime="";
+                    strTime=null;
                     strDuration=0;
                     totalPrice=0;
                     check1=0;
@@ -980,11 +988,19 @@ else
                         strTimeFrom="09:30";
                         strTimeTo="10:00";
                         strTime=strTimeFrom+"-"+strTimeTo;
+                        Toast.makeText(getActivity(), strTime, Toast.LENGTH_SHORT).show();
                         strDate=date;
                         strDuration =strDuration+30;
-                        totalPrice=totalPrice+Integer.valueOf(price1);
-                        timeIds.add(timeId1);
-                        priceArray.add(price1);
+//                        totalPrice=Integer.valueOf(price1);
+//                        timeIds.add(timeId1);
+//                        priceArray.add(price1);
+
+                        try {
+                            totalPrice = Integer.parseInt(price1);
+                            timeIds.add(timeId1);
+                            priceArray.add(price1);
+                        } catch(NumberFormatException nfe) {
+                        }
                     }
                 }
 
@@ -998,7 +1014,7 @@ else
                     tv10_1030.setBackgroundResource(R.drawable.boundry);
                     strTimeFrom="";
                     strTimeTo="";
-                    strTime="";
+                    strTime=null;
                     strDuration=0;
                     totalPrice=0;
                     check2=0;
@@ -1043,7 +1059,7 @@ else
                     tv1030_11.setBackgroundResource(R.drawable.boundry);
                     strTimeFrom="";
                     strTimeTo="";
-                    strTime="";
+                    strTime=null;
                     strDuration=0;
                     totalPrice=0;
                     check3=0;
@@ -1081,7 +1097,7 @@ else
                     tv11_1130.setBackgroundResource(R.drawable.boundry);
                     strTimeFrom="";
                     strTimeTo="";
-                    strTime="";
+                    strTime=null;
                     strDuration=0;
                     totalPrice=0;
                     check4=0;
@@ -1119,7 +1135,7 @@ else
                     tv1130_12.setBackgroundResource(R.drawable.boundry);
                     strTimeFrom="";
                     strTimeTo="";
-                    strTime="";
+                    strTime=null;
                     strDuration=0;
                     totalPrice=0;
                     check5=0;
@@ -1157,7 +1173,7 @@ else
                     tv12_1230.setBackgroundResource(R.drawable.boundry);
                     strTimeFrom="";
                     strTimeTo="";
-                    strTime="";
+                    strTime=null;
                     strDuration=0;
                     totalPrice=0;
                     check6=0;
@@ -1195,7 +1211,7 @@ else
                     tv13_1330.setBackgroundResource(R.drawable.boundry);
                     strTimeFrom="";
                     strTimeTo="";
-                    strTime="";
+                    strTime=null;
                     strDuration=0;
                     totalPrice=0;
                     check7=0;
@@ -1233,7 +1249,7 @@ else
                     tv1330_14.setBackgroundResource(R.drawable.boundry);
                     strTimeFrom="";
                     strTimeTo="";
-                    strTime="";
+                    strTime=null;
                     strDuration=0;
                     totalPrice=0;
                     check8=0;
@@ -1271,7 +1287,7 @@ else
                     tv14_1430.setBackgroundResource(R.drawable.boundry);
                     strTimeFrom="";
                     strTimeTo="";
-                    strTime="";
+                    strTime=null;
                     strDuration=0;
                     totalPrice=0;
                     check9=0;
@@ -1309,7 +1325,7 @@ else
                         tv1430_15.setBackgroundResource(R.drawable.boundry);
                         strTimeFrom="";
                         strTimeTo="";
-                        strTime="";
+                        strTime=null;
                         strDuration=0;
                         totalPrice=0;
                         check10=0;
@@ -1346,7 +1362,7 @@ else
                 tv15_1530.setBackgroundResource(R.drawable.boundry);
                 strTimeFrom="";
                 strTimeTo="";
-                strTime="";
+                strTime=null;
                 strDuration=0;
                 totalPrice=0;
                 check11=0;
@@ -1384,7 +1400,7 @@ else
                 tv1530_16.setBackgroundResource(R.drawable.boundry);
                 strTimeFrom="";
                 strTimeTo="";
-                strTime="";
+                strTime=null;
                 strDuration=0;
                 totalPrice=0;
                 check12=0;
